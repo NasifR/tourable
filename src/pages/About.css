@@ -5,7 +5,7 @@
     max-width: 100%;
     margin: 0 auto;
     font-family: Arial, sans-serif;
-    color: black;
+    color: white;
 }
 
 
@@ -78,10 +78,13 @@
 }
 
 .team-member {
+    align-items: center;
     text-align: center;
+    justify-content: center;
 }
 
 .team-member img {
+    margin: auto;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -91,6 +94,7 @@
     font-size: 1rem;
     font-weight: bold;
     margin-top: 10px;
+    text-align: center;
 }
 
 /* Contact Section */
