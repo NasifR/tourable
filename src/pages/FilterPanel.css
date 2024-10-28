@@ -1,0 +1,98 @@
+.filter-panel {
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: black
+}
+
+.filter-section {
+    margin-bottom: 15px;
+}
+
+.filter-section label {
+    font-weight: bold;
+    margin: 5px;
+    display: block;
+}
+
+.date-range {
+    display: flex;
+    align-items: center;
+}
+
+.date-range input[type="date"] {
+    width: 160px; /* Adjust width for box*/
+    color:white;
+    padding: 5px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+}
+
+.date-separator {
+    margin: 0 10px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Checkbox Styling */
+.location-checkboxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    gap: 10px; /* Creates space between items */
+}
+
+.event-type-checkboxes,
+.duration-checkboxes,
+.accessibility-checkboxes,
+.audience-checkboxes,
+.indoor-outdoor-checkboxes,
+.event-size-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.filter-panel input[type="date"],
+.filter-panel input[type="time"],
+.filter-panel input[type="number"],
+.filter-panel input[type="text"] {
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333; /* Dark text for readability */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 0.9rem;
+    width: 100%; /* Ensures the input takes up full width of its container */
+}
+
+
+.price-range {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the inputs and separator */
+}
+
+.price-range input[type="number"] {
+    flex: 1; /* Makes both input boxes take equal width */
+    padding: 8px;
+    background-color: #f0f0f0; /* Light gray background */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.price-separator {
+    font-weight: bold;
+    font-size: 1rem;
+}

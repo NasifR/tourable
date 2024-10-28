@@ -39,6 +39,7 @@
     gap: 0.5rem;
     padding: 1rem;
     background-color: #f8f8f8;
+    position: relative;
 }
 
 .search-bar input[type="text"] {
@@ -69,6 +70,18 @@
     justify-content: center;
 }
 
+.filter-panel {
+    position: absolute;
+    top: 100%; /* Panel will  be directly under button */
+    width: 1000px; 
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    margin-top: 0.5rem;
+  }
+  
 /* Monthly Happenings and Top Trending Section */
 .section-title {
     font-size: 1.8rem;
