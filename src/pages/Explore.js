@@ -23,7 +23,6 @@ const SearchBar = ({ onFilterClick, showFilterPanel }) => (
             <option>New York</option>
             <option>Los Angeles</option>
             <option>Chicago</option>
-            {/* Add more cities as needed */}
         </select>
         <button className="search-btn">🔍</button>
 
