@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Explore.css'; // Import your CSS file
 import MonthlyHappenings from './MonthlyHappenings';
+import FilterPanel from './FilterPanel';
+import './FilterPanel.css';
 
 // Hero Section Component
 const HeroSection = () => (
@@ -13,17 +15,20 @@ const HeroSection = () => (
 );
 
 // Search Bar Component
-const SearchBar = () => (
+const SearchBar = ({ onFilterClick, showFilterPanel }) => (
     <section className="search-bar">
         <input type="text" placeholder="Search events" />
-        <button>Filter</button>
-        <select>
+        <button onClick={onFilterClick}>Filter</button>
+        <select>    
             <option>New York</option>
             <option>Los Angeles</option>
             <option>Chicago</option>
             {/* Add more cities as needed */}
         </select>
         <button className="search-btn">🔍</button>
+
+        {/*Rendering the FilterPanel under the button for filter if showFilterPanel is true */}
+        {showFilterPanel && <FilterPanel />}
     </section>
 );
 
@@ -61,13 +66,20 @@ const TopTrending = () => (
 );
 
 // Main Explore Page Component
-const Explore = () => (
+const Explore = () => {
+    const [showFilterPanel, setShowFilterPanel] = useState(false);
+
+    const toggleFilterPanel = () => {
+        setShowFilterPanel(!showFilterPanel);
+    };
+    return (
     <div>
         <HeroSection />
-        <SearchBar />
+        <SearchBar onFilterClick={toggleFilterPanel} showFilterPanel={showFilterPanel}/>
         <MonthlyHappenings />
         <TopTrending />
     </div>
-);
+    );
+};
 
 export default Explore;
