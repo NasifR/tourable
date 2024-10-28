@@ -17,6 +17,7 @@ function Home() {
       className="min-h-screen bg-cover bg-center bg-fixed"
       style={{
         backgroundImage: `url(${bg})`,
+        backgroundColor: '#664229',
       }}
     >
       <main className="h-screen w-screen" style={style}>

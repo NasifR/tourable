@@ -1,15 +1,17 @@
 .about-us {
+    background: #452A1A;
     padding: 20px;
-    max-width: 800px;
+    padding-top: 60px;
+    max-width: 100%;
     margin: 0 auto;
     font-family: Arial, sans-serif;
-    background-color: white;
-    color:black;
+    color: black;
 }
 
 
 .header-section {
     text-align: center;
+    padding-top: 50px;
 }
 
 .header-section h1 {
@@ -27,6 +29,7 @@
 
 /* Values Section */
 .values-section {
+    
     margin-top: 40px;
     text-align: center;
     
