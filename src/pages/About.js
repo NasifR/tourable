@@ -42,23 +42,23 @@ function About() {
                 <div className="team-grid">
                     <div className="team-member">
                         <img src={aboutUsImage2} alt="Team Member" />
-                        <p>Team Member 1</p>
+                        <p>Arbab Husain</p>
                     </div>
                     <div className="team-member">
                         <img src={aboutUsImage2} alt="Team Member" />
-                        <p>Team Member 2</p>
+                        <p>Jolie Huang</p>
                     </div>
                     <div className="team-member">
                         <img src={aboutUsImage2} alt="Team Member" />
-                        <p>Team Member 3</p>
+                        <p>Nasif Rahman</p>
                     </div>
                     <div className="team-member">
                         <img src={aboutUsImage2} alt="Team Member" />
-                        <p>Team Member 4</p>
+                        <p>Pretam Chowdhury</p>
                     </div>
                     <div className="team-member">
                         <img src={aboutUsImage2} alt="Team Member" />
-                        <p>Team Member 5</p>
+                        <p>Thamida Choudhury</p>
                     </div>
                 </div>
             </section>
