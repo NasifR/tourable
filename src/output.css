@@ -914,7 +914,11 @@ html {
 
   @supports (color: color-mix(in oklab, black, black)) {
     .btn:hover {
-      background-color: white;
+      background-color: color-mix(
+            in oklab,
+            oklch(var(--btn-color, var(--b2)) / var(--tw-bg-opacity, 1)) 90%,
+            black
+          );
       border-color: color-mix(
             in oklab,
             oklch(var(--btn-color, var(--b2)) / var(--tw-border-opacity, 1)) 90%,
