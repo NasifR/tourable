@@ -2,6 +2,8 @@ import React from "react";
 import profile_cover from "../assets/images/profile_cover.png";
 import { FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
 import './Profile.css';
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import { Amplify, Auth } from "aws-amplify";
 
 // card format
 const EventCard = ({ title, time, location, price, followers, imgSrc }) => (
@@ -51,7 +53,7 @@ const FavoriteEvents = () => (
   </section>
 );
 
-function Profile() {
+function Profile({ signOut, user }) {
   return (
     <div className="bg-white">
       <div className="pt-20" style={{ backgroundColor: "#452A1A" }}>
@@ -63,9 +65,10 @@ function Profile() {
         style={{ backgroundColor: "#452A1A" }}
       >
         <div className="max-w-2xl">
-          <h1 className="text-5xl pt-10 mb-2">First Last</h1>
+          <h1 className="text-5xl pt-10 mb-2">Name</h1>
           <h2 className="text-lg mb-3">Location</h2>
           <p>Profile description</p>
+         
           
           <div className="flex space-x-4 mt-4 pb-5">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
@@ -78,6 +81,7 @@ function Profile() {
               <FaTwitter className="text-white text-2xl hover:text-gray-300" />
             </a>
           </div>
+          <button onClick={signOut} className="py-2 px-4 mb-5 bg-white text-black font-bold rounded-full">Log out</button>
         </div>
       </div>
 
@@ -88,4 +92,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default withAuthenticator(Profile);
