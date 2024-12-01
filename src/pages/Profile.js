@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import profile_cover from "../assets/images/profile_cover.png";
 import { FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
 import './Profile.css';
 import { Authenticator } from "../component/Authenticator";
+import { fetchAuthSession, fetchUserAttributes } from "aws-amplify/auth";
+
 
 
 // card format
@@ -56,6 +58,24 @@ const FavoriteEvents = () => (
 
 // profile:
 function Profile() {
+  const [userAttributes, setUserAttributes] = useState(null);
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        // Get the current authenticated session
+        const session = await fetchAuthSession();
+        // Fetch user attributes using the session
+        const attributes = await fetchUserAttributes(session.user);
+        setUserAttributes(attributes);
+      } catch (error) {
+        console.error("Error fetching user attributes:", error);
+      }
+    };
+
+    fetchUserDetails();
+  }, []);
+
   return (
     <Authenticator variation="modal">
       {({ signOut, user  }) => (
@@ -69,7 +89,7 @@ function Profile() {
         style={{ backgroundColor: "#452A1A" }}
       >
         <div className="max-w-2xl">
-          <h1 className="text-5xl pt-10 mb-2">Name</h1>
+          <h1 className="text-5xl pt-10 mb-2">{userAttributes.name}</h1>
           <h2 className="text-lg mb-3">Location</h2>
           <p>Profile description</p>
          
