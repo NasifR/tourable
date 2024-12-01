@@ -2,8 +2,8 @@ import React from "react";
 import profile_cover from "../assets/images/profile_cover.png";
 import { FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
 import './Profile.css';
-import { withAuthenticator } from "@aws-amplify/ui-react";
-import { Amplify, Auth } from "aws-amplify";
+import { Authenticator } from "../component/Authenticator";
+
 
 // card format
 const EventCard = ({ title, time, location, price, followers, imgSrc }) => (
@@ -53,8 +53,12 @@ const FavoriteEvents = () => (
   </section>
 );
 
-function Profile({ signOut, user }) {
+
+// profile:
+function Profile() {
   return (
+    <Authenticator variation="modal">
+      {({ signOut, user  }) => (
     <div className="bg-white">
       <div className="pt-20" style={{ backgroundColor: "#452A1A" }}>
         <img src={profile_cover} alt="cover" className="w-full" />
@@ -89,7 +93,9 @@ function Profile({ signOut, user }) {
         <FavoriteEvents />
       </div>
     </div>
+      )}
+    </Authenticator>
   );
 }
 
-export default withAuthenticator(Profile);
+export default Profile;

@@ -12,9 +12,9 @@ Amplify.configure(config)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ThemeProvider>
+  
     <App />
-  </ThemeProvider>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
