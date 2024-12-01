@@ -63,9 +63,7 @@ function Profile() {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        // Get the current authenticated session
         const session = await fetchAuthSession();
-        // Fetch user attributes using the session
         const attributes = await fetchUserAttributes(session.user);
         setUserAttributes(attributes);
       } catch (error) {
@@ -89,9 +87,11 @@ function Profile() {
         style={{ backgroundColor: "#452A1A" }}
       >
         <div className="max-w-2xl">
-          <h1 className="text-5xl pt-10 mb-2">{userAttributes.name}</h1>
-          <h2 className="text-lg mb-3">Location</h2>
-          <p>Profile description</p>
+              <h1 className="text-5xl pt-10 mb-2">
+                {userAttributes ? userAttributes.name : "Loading..."}
+              </h1>
+              <h2 className="text-lg mb-3">Location</h2>
+              <p>Profile description</p>
          
           
           <div className="flex space-x-4 mt-4 pb-5">
