@@ -2,17 +2,12 @@ import React, { useState } from 'react';
 import './Explore.css'; // Import your CSS file
 import MonthlyHappenings from './MonthlyHappenings';
 import FilterPanel from './FilterPanel';
+import HeroSection from "../component/HeroSection";
+import TopTrending from '../component/TopTrending';
 import './FilterPanel.css';
+import EventCard from '../component/EventCard';
 
-// Hero Section Component
-const HeroSection = () => (
-    <section className="hero">
-        <h1 className="f1">WHAT TYPE OF </h1>
-        <h1 className="f1">EVENT ARE YOU </h1>
-        <h1 className="f1">LOOKING FOR?</h1>
-        <p>Find the best events near you, from food festivals to concerts, all in one place tailored to your interests.</p>
-    </section>
-);
+
 
 // Search Bar Component
 const SearchBar = ({ onFilterClick, showFilterPanel }) => (
@@ -30,7 +25,7 @@ const SearchBar = ({ onFilterClick, showFilterPanel }) => (
         {showFilterPanel && <FilterPanel />}
     </section>
 );
-
+/*
 // Event Card Component
 const EventCard = ({ title, time, location, price, followers, imgSrc }) => (
     <div className="card1">
@@ -44,9 +39,10 @@ const EventCard = ({ title, time, location, price, followers, imgSrc }) => (
         </div>
     </div>
 );
-
+*/
 
 // Top Trending Section
+/*
 const TopTrending = () => (
     <section className="top-trending">
         <h2 className="section-title">Top trending in New York</h2>
@@ -75,10 +71,11 @@ const TopTrending = () => (
                 followers="260"
                 imgSrc="concert.jpg" // Replace with your image source
             />
-            {/* Repeat <EventCard /> component for additional events */}
+            
         </div>
     </section>
-);
+);*/
+
 
 const EventsUnder30 = () => (
     <section className="events-under-30">
@@ -113,11 +110,12 @@ const EventsUnder30 = () => (
     </section>
 );
 
-
+/*
 const EventsInNewYork = () => (
     <section className="events-in-ny">
         <h2 className="section-title">Events in New York</h2>
         <div className="cards">
+            
             <EventCard
                 title="Harry Styles Concert"
                 time="Tomorrow 9:00 PM"
@@ -150,10 +148,11 @@ const EventsInNewYork = () => (
                 followers="220"
                 imgSrc="food-festival.jpg" // Replace with your image source
             />
+            
         </div>
     </section>
 );
-
+*/
 
 
 // Main Explore Page Component
@@ -163,6 +162,7 @@ const Explore = () => {
     const toggleFilterPanel = () => {
         setShowFilterPanel(!showFilterPanel);
     };
+
     return (
     <div>
         <HeroSection />
@@ -170,7 +170,6 @@ const Explore = () => {
         <MonthlyHappenings />
         <TopTrending />
         <EventsUnder30/>
-        <EventsInNewYork/>
     </div>
     );
 };
