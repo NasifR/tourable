@@ -1,14 +1,41 @@
 // MonthlyHappenings.js
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import Slider from 'react-slick';
 import './Explore.css';
+import EventCard from '../component/EventCard';
 
-const MonthlyHappenings = () => {
+const apikey = process.env.REACT_APP_API_KEY;
+const MonthlyHappenings = ( {userLocation}) => {
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        if (!userLocation) return;
+
+        fetch(
+        `https://app.ticketmaster.com/discovery/v2/events.json?latlong=${userLocation}&radius=50&priceRange=0,30&locale=*&apikey=${apikey}`
+        )
+        .then((response) => response.json())
+        .then((data) => {
+            if (data._embedded?.events) {
+            const fetchedEvents = data._embedded.events.map((event) => ({
+                title: event.name,
+                time: event.dates.start.localDate,
+                location: event._embedded.venues[0]?.name || "Unknown Location",
+                price: event.priceRanges?.[0]?.min || "N/A",
+                followers:
+                event._embedded.attractions?.[0]?.upcomingEvents?._total || "N/A",
+                imgSrc: event.images[0]?.url || "../logo/gg_profile.png",
+            }));
+            setEvents(fetchedEvents);
+            }
+        })
+        .catch((err) => console.error("Error fetching events:", err));
+    }, [userLocation]);
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3, // Show 3 cards at a time
+        slidesToShow: 3, 
         slidesToScroll: 1,
         responsive: [
             {
@@ -28,18 +55,7 @@ const MonthlyHappenings = () => {
         ],
     };
 
-    const EventCard = ({ title, time, location, price, followers, imgSrc }) => (
-        <div className="card">
-            <img src={imgSrc} alt="Event" />
-            <div className="content">
-                <h3>{title}</h3>
-                <p>{time}</p>
-                <p>{location}</p>
-                <p>From ${price}</p>
-                <p>{title} | 👥 {followers} followers</p>
-            </div>
-        </div>
-    );
+    
 
     return (
         <section className="monthly-happenings">
@@ -49,30 +65,9 @@ const MonthlyHappenings = () => {
             </div>
             <p>We've handpicked these events for you.</p>
             <Slider {...settings} className="cards-slider">
-                <EventCard
-                    title="Harry Styles Concert"
-                    time="Tomorrow 9:00 PM"
-                    location="Madison Square Garden"
-                    price="From $169.00"
-                    followers="260 followers"
-                    imgSrc="concert.jpg" // Replace with your image source
-                />
-                <EventCard
-                    title="Harry Styles Concert"
-                    time="Tomorrow 9:00 PM"
-                    location="Madison Square Garden"
-                    price="From $169.00"
-                    followers="260 followers"
-                    imgSrc="concert.jpg" // Replace with your image source
-                />
-                <EventCard
-                    title="Harry Styles Concert"
-                    time="Tomorrow 9:00 PM"
-                    location="Madison Square Garden"
-                    price="From $169.00"
-                    followers="260 followers"
-                    imgSrc="concert.jpg" // Replace with your image source
-                />
+                {events.map((event, index) => (
+          <EventCard key={index} {...event} />
+        ))}
                 {/* Add more <EventCard /> components as needed */}
             </Slider>
         </section>

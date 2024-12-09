@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Explore.css'; // Import your CSS file
 import MonthlyHappenings from './MonthlyHappenings';
 import FilterPanel from './FilterPanel';
 import HeroSection from "../component/HeroSection";
 import TopTrending from '../component/TopTrending';
-import './FilterPanel.css';
-import EventCard from '../component/EventCard';
+import EventsUnder30 from '../component/EventsUnder30';
 
 
 
@@ -77,38 +76,7 @@ const TopTrending = () => (
 );*/
 
 
-const EventsUnder30 = () => (
-    <section className="events-under-30">
-        <h2 className="section-title">Events $30 and Under</h2>
-        <div className="cards">
-            <EventCard
-                title="Outdoor Yoga Class"
-                time="Saturday 8:00 AM"
-                location="Central Park"
-                price="20.00"
-                followers="150"
-                imgSrc="yoga.jpg" // Replace with your image source
-            />
-            <EventCard
-                title="Street Food Festival"
-                time="Sunday 12:00 PM"
-                location="Brooklyn"
-                price="25.00"
-                followers="320"
-                imgSrc="streetfood.jpg" // Replace with your image source
-            />
-            <EventCard
-                title="Movie Night"
-                time="Friday 7:30 PM"
-                location="Bryant Park"
-                price="15.00"
-                followers="200"
-                imgSrc="movie.jpg" // Replace with your image source
-            />
-            {/* Add more <EventCard /> components as needed */}
-        </div>
-    </section>
-);
+
 
 /*
 const EventsInNewYork = () => (
@@ -116,38 +84,7 @@ const EventsInNewYork = () => (
         <h2 className="section-title">Events in New York</h2>
         <div className="cards">
             
-            <EventCard
-                title="Harry Styles Concert"
-                time="Tomorrow 9:00 PM"
-                location="Madison Square Garden"
-                price="169.00"
-                followers="260"
-                imgSrc="concert.jpg" // Replace with your image source
-            />
-            <EventCard
-                title="Jazz Night"
-                time="Tonight 8:00 PM"
-                location="Blue Note"
-                price="25.00"
-                followers="150"
-                imgSrc="jazz-night.jpg" // Replace with your image source
-            />
-            <EventCard
-                title="Broadway Show"
-                time="Saturday 7:00 PM"
-                location="Times Square Theater"
-                price="120.00"
-                followers="400"
-                imgSrc="broadway.jpg" // Replace with your image source
-            />
-            <EventCard
-                title="Food Festival"
-                time="Sunday 12:00 PM"
-                location="Central Park"
-                price="30.00"
-                followers="220"
-                imgSrc="food-festival.jpg" // Replace with your image source
-            />
+            
             
         </div>
     </section>
@@ -158,18 +95,37 @@ const EventsInNewYork = () => (
 // Main Explore Page Component
 const Explore = () => {
     const [showFilterPanel, setShowFilterPanel] = useState(false);
+    const [userLocation, setUserLocation] = useState(null);
+    const [error, setError] = useState(null);
 
     const toggleFilterPanel = () => {
         setShowFilterPanel(!showFilterPanel);
     };
 
+    useEffect(() => {
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const { latitude, longitude } = position.coords;
+              setUserLocation(`${latitude},${longitude}`);
+            },
+            (err) => {
+              console.error("Error retrieving location:", err.message);
+              setError("Unable to retrieve your location.");
+            }
+          );
+        } else {
+          setError("Geolocation is not supported by your browser.");
+        }
+      }, []);
+
     return (
     <div>
         <HeroSection />
         <SearchBar onFilterClick={toggleFilterPanel} showFilterPanel={showFilterPanel}/>
-        <MonthlyHappenings />
-        <TopTrending />
-        <EventsUnder30/>
+        <MonthlyHappenings userLocation={userLocation}/>
+        <TopTrending userLocation={userLocation} />
+      <EventsUnder30 userLocation={userLocation} />
     </div>
     );
 };

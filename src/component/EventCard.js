@@ -9,7 +9,7 @@ const EventCard = ({ title, time, location, price, followers, imgSrc }) => (
       <p>{time}</p>
       <p>{location}</p>
       <p>From ${price}</p>
-      <p>👥 {followers} followers</p>
+      <p>{followers} followers</p>
     </div>
   </div>
 );
