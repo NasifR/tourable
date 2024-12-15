@@ -3,7 +3,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'red-hat': ['"Red Hat Display"', 'sans-serif'],
+      },
+    },
   },
   plugins: [
     require('daisyui'),

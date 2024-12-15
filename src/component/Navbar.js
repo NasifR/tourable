@@ -15,7 +15,7 @@ function Navbar() {
           <img src={logo1} alt="Tourable Logo" className="h-12 w-12" /> 
           </Link>
           <Link to="/">
-          <span className="text-white font-bold text-3xl">Tourable</span>
+          <span className="text-white font-bold font-red-hat text-3xl">Tourable</span>
           </Link>
         </div>
 
