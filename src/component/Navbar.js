@@ -7,7 +7,7 @@ import logo1 from '../logo/Logo-picture.png';
 
 function Navbar() {
   return (
-    <nav className="bg-transparent z-10 p-4 fixed w-full">
+    <nav className="bg-[#452A1A] z-10 p-4 fixed w-full">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Left section with logo */}
         <div className="flex items-center space-x-2">
@@ -51,3 +51,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
