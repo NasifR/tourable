@@ -1,4 +1,6 @@
 import React from "react";
+import "../pages/Explore.css";
+import "../tailwind.css";
 
 
 const EventCard = ({ title, time, location, price, followers, imgSrc }) => (

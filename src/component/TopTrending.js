@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import EventCard from "./EventCard";
+import "../pages/Explore.css";
 
 const apikey = process.env.REACT_APP_API_KEY;
 
