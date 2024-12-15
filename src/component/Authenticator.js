@@ -91,12 +91,12 @@ export const Authenticator = ({ children }) => {
                 color: "#fff",
                 py: "1rem",
                 borderRadius: "1rem 1rem 0 0",
-                marginTop: "2rem"
+                marginTop: "4.5rem"
               }}
             >
               <Typography
                 variant="h4"
-                sx={{ fontWeight: 550, fontFamily: "fangsong" }}
+                sx={{ fontWeight: 650, fontFamily: "Red Hat Display" }}
               >
                 Tourable
               </Typography>
