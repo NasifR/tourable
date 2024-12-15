@@ -11,8 +11,12 @@ function Navbar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Left section with logo */}
         <div className="flex items-center space-x-2">
+         <Link to="/">
           <img src={logo1} alt="Tourable Logo" className="h-12 w-12" /> 
+          </Link>
+          <Link to="/">
           <span className="text-white font-bold text-3xl">Tourable</span>
+          </Link>
         </div>
 
         {/* Center section with navigation links */}
@@ -43,7 +47,9 @@ function Navbar() {
             <FaSearch className="absolute top-1/2 left-2 transform -translate-y-1/2 text-black" />
           </div>
           {/* Profile icon */}
+          <Link to="/profile">
           <FaUserCircle className="text-white text-2xl" />
+          </Link>
         </div>
       </div>
     </nav>
