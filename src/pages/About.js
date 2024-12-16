@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './About.css';
 import aboutUsImage1 from '../assets/images/aboutUsImage1.png';
 import aboutUsImage2 from '../assets/images/aboutUsImage2.png';
+import emailjs from '@emailjs/browser';  
 
 function About() {
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+    emailjs.sendForm(
+        'service_brjsl94',     
+        'template_q0bwruj', 
+        form.current,   
+        'YJqH5POC7qmfxBfiH'      
+    )
+    .then((result) => {
+        console.log('Success:', result.text);
+        alert('Message sent successfully!'); 
+        form.current.reset(); // Clear form fields
+    })
+    .catch((error) => {
+        console.error('Error:', error.text);
+        alert('Failed to send message. Please try again.'); 
+    });
+};
     return (
         <div className="about-us">
             {/* Header Section */}
@@ -66,11 +88,11 @@ function About() {
             {/* Contact Section */}
             <section className="contact-section">
                 <h2>Contact Us</h2>
-                <form className="contact-form">
-                    <input type="text" placeholder="Name" />
-                    <input type="email" placeholder="Email" />
-                    <input type="text" placeholder="Subject" />
-                    <textarea placeholder="Message"></textarea>
+                <form ref={form} onSubmit={sendEmail} className="contact-form">
+                    <input type="text" name="name" placeholder="Name" required />
+                    <input type="email" placeholder="Email" required />
+                    <input type="text" name="subject" placeholder="Subject" required />
+                    <textarea name="message" placeholder="Message" required ></textarea>
                     <button type="submit">Send Message</button>
                 </form>
             </section>
