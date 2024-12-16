@@ -1,132 +1,93 @@
 import React, { useState, useEffect } from 'react';
-import './Explore.css'; // Import your CSS file
+import './Explore.css'; 
 import MonthlyHappenings from './MonthlyHappenings';
 import FilterPanel from './FilterPanel';
 import HeroSection from "../component/HeroSection";
 import TopTrending from '../component/TopTrending';
 import EventsUnder30 from '../component/EventsUnder30';
+import FilteredEvents from '../component/FilteredEvents';
 
+const SearchBar = ({ onFilterClick, showFilterPanel, onSearch }) => {
+    const [searchText, setSearchText] = useState('');
+    const [selectedLocation, setSelectedLocation] = useState('New York'); 
 
+    const handleSearchChange = (e) => {
+        setSearchText(e.target.value); 
+    };
 
-// Search Bar Component
-const SearchBar = ({ onFilterClick, showFilterPanel }) => (
-    <section className="search-bar">
-        <input type="text" placeholder="Search events" />
-        <button onClick={onFilterClick}>Filter</button>
-        <select>    
-            <option>New York</option>
-            <option>Los Angeles</option>
-            <option>Chicago</option>
-        </select>
-        <button className="search-btn">🔍</button>
+    const handleLocationChange = (e) => {
+        setSelectedLocation(e.target.value);
+    };
 
-        {/*Rendering the FilterPanel under the button for filter if showFilterPanel is true */}
-        {showFilterPanel && <FilterPanel />}
-    </section>
-);
-/*
-// Event Card Component
-const EventCard = ({ title, time, location, price, followers, imgSrc }) => (
-    <div className="card1">
-        <img src={imgSrc} alt="Event" />
-        <div className="content">
-            <h3>{title}</h3>
-            <p>{time}</p>
-            <p>{location}</p>
-            <p>From ${price}</p>
-            <p>{title} | 👥 {followers} followers</p>
-        </div>
-    </div>
-);
-*/
+    const passQuery = () => {
+        onSearch(searchText);  // Pass the search query to the parent
+    };
 
-// Top Trending Section
-/*
-const TopTrending = () => (
-    <section className="top-trending">
-        <h2 className="section-title">Top trending in New York</h2>
-        <div className="cards">
-            <EventCard
-                title="Harry Styles Concert"
-                time="Tomorrow 9:00 PM"
-                location="Madison Square Garden"
-                price="169.00"
-                followers="260"
-                imgSrc="concert.jpg" // Replace with your image source
+    return (
+        <section className="search-bar">
+            <input 
+                type="text" 
+                placeholder="Search events"
+                value={searchText}
+                onChange={handleSearchChange} 
             />
-            <EventCard
-                title="Harry Styles Concert"
-                time="Tomorrow 9:00 PM"
-                location="Madison Square Garden"
-                price="169.00"
-                followers="260"
-                imgSrc="concert.jpg" // Replace with your image source
-            />
-            <EventCard
-                title="Harry Styles Concert"
-                time="Tomorrow 9:00 PM"
-                location="Madison Square Garden"
-                price="169.00"
-                followers="260"
-                imgSrc="concert.jpg" // Replace with your image source
-            />
-            
-        </div>
-    </section>
-);*/
+            <button onClick={onFilterClick}>Filter</button>
+            <select onChange={handleLocationChange} value={selectedLocation}>
+                <option>New York</option>
+                <option>Los Angeles</option>
+                <option>Chicago</option>
+            </select>
+            <button className="search-btn" onClick={passQuery}>🔍</button>
 
+            {showFilterPanel && <FilterPanel />}
+        </section>
+    );
+};
 
-
-
-/*
-const EventsInNewYork = () => (
-    <section className="events-in-ny">
-        <h2 className="section-title">Events in New York</h2>
-        <div className="cards">
-            
-            
-            
-        </div>
-    </section>
-);
-*/
-
-
-// Main Explore Page Component
 const Explore = () => {
     const [showFilterPanel, setShowFilterPanel] = useState(false);
     const [userLocation, setUserLocation] = useState(null);
+    const [query, setQuery] = useState('');
     const [error, setError] = useState(null);
 
     const toggleFilterPanel = () => {
         setShowFilterPanel(!showFilterPanel);
     };
 
+    const handleSearch = (searchQuery) => {
+        setQuery(searchQuery);  
+    };
+
     useEffect(() => {
         if ("geolocation" in navigator) {
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-              const { latitude, longitude } = position.coords;
-              setUserLocation(`${latitude},${longitude}`);
-            },
-            (err) => {
-              console.error("Error retrieving location:", err.message);
-              setError("Unable to retrieve your location.");
-            }
-          );
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    setUserLocation(`${latitude},${longitude}`);
+                },
+                (err) => {
+                    console.error("Error retrieving location:", err.message);
+                    setError("Unable to retrieve your location.");
+                }
+            );
         } else {
-          setError("Geolocation is not supported by your browser.");
+            setError("Geolocation is not supported by your browser.");
         }
-      }, []);
+    }, []);
 
     return (
-    <div>
-        <HeroSection />
-        <SearchBar onFilterClick={toggleFilterPanel} showFilterPanel={showFilterPanel}/>
-        <MonthlyHappenings userLocation={userLocation}/>
-        <TopTrending userLocation={userLocation} />
-      <EventsUnder30 userLocation={userLocation} />
-    </div>
+        <div>
+            <HeroSection />
+            <SearchBar 
+                onFilterClick={toggleFilterPanel} 
+                showFilterPanel={showFilterPanel}
+                onSearch={handleSearch}  
+            />
+            <MonthlyHappenings userLocation={userLocation}/>
+            <FilteredEvents query={query} />
+            <TopTrending userLocation={userLocation} />
+            <EventsUnder30 userLocation={userLocation} />
+        </div>
     );
 };
 
