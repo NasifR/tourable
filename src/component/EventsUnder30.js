@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EventCard from './EventCard';
+import "../pages/Explore.css";
 
 const EventsUnder30 = ({ userLocation, searchQuery }) => {
   const [events, setEvents] = useState([]);

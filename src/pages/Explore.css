@@ -92,8 +92,7 @@
     margin-top: 0.75rem;
     margin-bottom: 2rem;
     font-weight: bold;
-    
-    
+    font-family: 'Alfa Slab One', serif;
 }
 
 .top-trending {
@@ -119,7 +118,7 @@
 }
 
 .card1 {
-    background-color: #B4A9A3; /* Light brown for card background */
+    background-color: #68361b; /* Light brown for card background */
     border-radius: 12px;
     overflow: hidden;
     width: 250px;
@@ -164,7 +163,7 @@
     text-align: center;
 }
 .events-in-ny .card1 {
-    background-color: #B4A9A3;
+    background-color: #68361b;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -279,7 +278,7 @@
 
 /* Event Card */
 .card {
-    background-color: #C3A995; /* Light brown for card background */
+    background-color: #68361b; /* Light brown for card background */
     border-radius: 12px;
     overflow: hidden;
     width: 250px;
