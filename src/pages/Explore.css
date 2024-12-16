@@ -333,3 +333,22 @@
         width: 100%;
     }
 }
+
+.dropdown-container {
+    margin-bottom: 20px;
+  }
+  
+  .category-dropdown {
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .category-dropdown:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  

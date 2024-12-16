@@ -15,7 +15,7 @@ const TopTrending = ({ userLocation}) => {
 
   useEffect(() => {
     if (!userLocation) return;
-
+    
     const fetchEvents = async () => {
       setLoading(true);
       setError(null);

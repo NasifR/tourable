@@ -6,6 +6,7 @@ import HeroSection from "../component/HeroSection";
 import TopTrending from '../component/TopTrending';
 import EventsUnder30 from '../component/EventsUnder30';
 import FilteredEvents from '../component/FilteredEvents';
+import CategoryEvents from '../component/CategoryEvents';
 
 const SearchBar = ({ onFilterClick, showFilterPanel, onSearch }) => {
     const [searchText, setSearchText] = useState('');
@@ -87,6 +88,7 @@ const Explore = () => {
             <FilteredEvents query={query} />
             <TopTrending userLocation={userLocation} />
             <EventsUnder30 userLocation={userLocation} />
+            <CategoryEvents userLocation={userLocation}></CategoryEvents>
         </div>
     );
 };
