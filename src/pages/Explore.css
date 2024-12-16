@@ -2,353 +2,373 @@
 
 /* Basic Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.favorite-icon {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+
+.heart-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: gray;
+  transition: color 0.3s;
+}
+
+.heart-icon.filled {
+  color: red;
+}
+
+.heart-icon:hover {
+  color: darkred;
 }
 
 /* Hero Section */
 .hero {
-    display:flex;
-    flex-direction: column;
-    background-color: #452A1A; /* Dark brown background */
-    color: #fff;
-    text-align: center;
-    padding: 5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #452a1a; /* Dark brown background */
+  color: #fff;
+  text-align: center;
+  padding: 5rem 3rem;
 }
 
 .hero h1 {
-    font-size: 5.25rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    font-family: 'Lora', serif;
+  font-size: 5.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: "Lora", serif;
 }
 
 .hero p {
-    font-size: 2rem;
-    color: #f2f2f2;
-    font-family: "Red Hat Display", sans-serif;
-    margin-top: 2rem; 
-    margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: #f2f2f2;
+  font-family: "Red Hat Display", sans-serif;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Search Bar Section */
 .search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1rem;
-    background-color: #f8f8f8;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  position: relative;
 }
 
 .search-bar input[type="text"] {
-    padding: 0.5rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    width: 300px;
-    font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 300px;
+  font-size: 1rem;
 }
 
-.search-bar button, .search-bar select {
-    padding: 0.5rem 1rem;
-    border: none;
-    background-color: #452A1A;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 20px;
+.search-bar button,
+.search-bar select {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #452a1a;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 20px;
 }
 
 .search-bar .search-btn {
-    background-color: #452A1A;
-    padding: 0.5rem 1rem;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: #452a1a;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .filter-panel {
-    position: absolute;
-    top: 100%; /* Panel will  be directly under button */
-    width: 1000px; 
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 100;
-    margin-top: 0.5rem;
-  }
-  
+  position: absolute;
+  top: 100%; /* Panel will  be directly under button */
+  width: 1000px;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  margin-top: 0.5rem;
+}
+
 /* Monthly Happenings and Top Trending Section */
 .section-title {
-    font-size: 1.8rem;
-    color: black;
-    text-align:left;
-    margin-top: 0.75rem;
-    margin-bottom: 2rem;
-    font-weight: bold;
-    font-family: 'Alfa Slab One', serif;
+  font-size: 1.8rem;
+  color: black;
+  text-align: left;
+  margin-top: 0.75rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  font-family: "Alfa Slab One", serif;
 }
 
 .top-trending {
-    padding: 2rem 1rem;
-    background-color: #fff;
-    color: #fff;
-    text-align: center;
+  padding: 2rem 1rem;
+  background-color: #fff;
+  color: #fff;
+  text-align: center;
 }
 
 .top-trending p {
-    margin-bottom: 2rem;
-    color: #f2f2f2;
-    font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #f2f2f2;
+  font-size: 1rem;
 }
 
 .cards {
-    display:flex;
-    flex-direction: row;
-    display: flex;
-    justify-content: space-around;
-    gap: 0rem;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+  gap: 0rem;
+  flex-wrap: wrap;
 }
 
 .card1 {
-    background-color: #68361b; /* Light brown for card background */
-    border-radius: 12px;
-    overflow: hidden;
-    width: 250px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+  background-color: #68361b; /* Light brown for card background */
+  border-radius: 12px;
+  overflow: hidden;
+  width: 250px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
 .card1 img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
 }
 
 .card1 .content {
-    padding: 1rem;
-    text-align: left;
+  padding: 1rem;
+  text-align: left;
 }
 
 .card1:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .events-under-30 {
-    padding: 2rem 1rem;
-    background-color: #fff;
-    color: #fff;
-    text-align: center;
+  padding: 2rem 1rem;
+  background-color: #fff;
+  color: #fff;
+  text-align: center;
 }
 
 .events-under-30 p {
-    margin-bottom: 2rem;
-    color: #f2f2f2;
-    font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #f2f2f2;
+  font-size: 1rem;
 }
 
 /*event-in-newyork */
 
 .events-in-ny {
-    padding: 2rem 1rem;
-    background-color: #fff;
-    color: #333;
-    text-align: center;
+  padding: 2rem 1rem;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
 }
 .events-in-ny .card1 {
-    background-color: #68361b;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    width: 45%; /* Wider cards */
-    max-width: 500px; /* Set a maximum width */
-    height: auto; /* Let height adjust to content */
-    margin-bottom: 4rem;
-    transition: transform 0.3s ease; /* Smooth hover effect */
-    
+  background-color: #68361b;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 45%; /* Wider cards */
+  max-width: 500px; /* Set a maximum width */
+  height: auto; /* Let height adjust to content */
+  margin-bottom: 4rem;
+  transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
 .events-in-ny .card1:hover {
-    transform: scale(1.05); /* Enlarge on hover */
+  transform: scale(1.05); /* Enlarge on hover */
 }
 
 .events-in-ny .card1 img {
-    width: 100%;
-    height: 250px; /* Taller image */
-    object-fit: cover; /* Maintain aspect ratio */
+  width: 100%;
+  height: 250px; /* Taller image */
+  object-fit: cover; /* Maintain aspect ratio */
 }
 
 .events-in-ny .content {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .events-in-ny {
-    padding: 2rem 1rem;
-    background-color: #fff;
-    color: #333; /* Darker text color for readability */
-    text-align: center;
+  padding: 2rem 1rem;
+  background-color: #fff;
+  color: #333; /* Darker text color for readability */
+  text-align: center;
 }
 
 .events-in-ny p {
-    margin-bottom: 2rem;
-    color: #666; /* Subtle gray for paragraph text */
-    font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #666; /* Subtle gray for paragraph text */
+  font-size: 1rem;
 }
 
 .events-in-ny .card1 .content h3 {
-    font-size: 2rem; /* Adjust font size */
-    font-weight: bold; /* Make title bold */
-    color: #fff; /* Set the text color */
-    margin: 0.5rem 0; /* Add top/bottom margin for spacing */
-    text-transform: uppercase; /* Optional: make the title uppercase */
-    letter-spacing: 1px; /* Optional: adjust spacing between letters */
-    font-family: 'Lora', serif;
+  font-size: 2rem; /* Adjust font size */
+  font-weight: bold; /* Make title bold */
+  color: #fff; /* Set the text color */
+  margin: 0.5rem 0; /* Add top/bottom margin for spacing */
+  text-transform: uppercase; /* Optional: make the title uppercase */
+  letter-spacing: 1px; /* Optional: adjust spacing between letters */
+  font-family: "Lora", serif;
 }
-
-
 
 /* Explore.css */
 
 /* Monthly Happenings Section */
 .monthly-happenings {
-    background-color: #452A1A;
-    color: #fff;
-    padding: 2rem;
-    text-align: center;
+  background-color: #452a1a;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
 }
 
 .monthly-happenings .section-title {
-    font-family: 'Alfa Slab One', serif;
-    color: #fff;
-    font-size: 3.60rem;
-    font-style: normal;
-    font-weight: 400;
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-    text-align: left;
+  font-family: "Alfa Slab One", serif;
+  color: #fff;
+  font-size: 3.6rem;
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  text-align: left;
 }
 
 .section-title-container {
-    display: flex; /* or block depending on your layout preference */
-    flex-direction: column; /* Aligns children vertically */
-    gap: 0rem; /* Adjust this value to change the gap between headings */
+  display: flex; /* or block depending on your layout preference */
+  flex-direction: column; /* Aligns children vertically */
+  gap: 0rem; /* Adjust this value to change the gap between headings */
 }
 .monthly-happenings p {
-    font-size: 1.25rem;
-    color: #f2f2f2;
-    margin-bottom: 1.5rem;
-    text-align: left;
-    font-family: "Red Hat Display", sans-serif;
+  font-size: 1.25rem;
+  color: #f2f2f2;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  font-family: "Red Hat Display", sans-serif;
 }
 
 /* Card Slider */
 .cards-slider {
-    width: 90%;
-    margin: 0 auto;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .slick-slide {
-    display: flex;
-    justify-content: center;
-    padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
 }
 
 .slick-dots li button:before {
-    color: #fff;
+  color: #fff;
 }
 
-.slick-prev:before, .slick-next:before {
-    color: #fff;
+.slick-prev:before,
+.slick-next:before {
+  color: #fff;
 }
 
 @media (max-width: 768px) {
-    .cards-slider {
-        width: 100%;
-    }
+  .cards-slider {
+    width: 100%;
+  }
 }
-
 
 /* Event Card */
 .card {
-    background-color: #68361b; /* Light brown for card background */
-    border-radius: 12px;
-    overflow: hidden;
-    width: 250px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+  background-color: #68361b; /* Light brown for card background */
+  border-radius: 12px;
+  overflow: hidden;
+  width: 250px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
 }
 
 .card .content {
-    padding: 1rem;
-    text-align: left;
+  padding: 1rem;
+  text-align: left;
 }
 
 .card h3 {
-    font-size: 1.2rem;
-    color: #4F3629;
-    margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #4f3629;
+  margin-bottom: 0.5rem;
 }
 
 .card p {
-    font-size: 0.9rem;
-    color: #333;
+  font-size: 0.9rem;
+  color: #333;
 }
 
 .card p:last-child {
-    font-size: 0.8rem;
-    color: #666;
+  font-size: 0.8rem;
+  color: #666;
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .search-bar {
-        flex-direction: column;
-        gap: 0.8rem;
-    }
+  .search-bar {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
 
-    .search-bar input[type="text"], .search-bar button, .search-bar select {
-        width: 100%;
-    }
+  .search-bar input[type="text"],
+  .search-bar button,
+  .search-bar select {
+    width: 100%;
+  }
 }
 
 .dropdown-container {
-    margin-bottom: 20px;
-  }
-  
-  .category-dropdown {
-    padding: 8px 12px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    outline: none;
-    cursor: pointer;
-  }
-  
-  .category-dropdown:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  }
-  
+  margin-bottom: 20px;
+}
+
+.category-dropdown {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+  cursor: pointer;
+}
+
+.category-dropdown:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
