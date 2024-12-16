@@ -47,7 +47,7 @@ function Home() {
         </div>
 
         {/* Cards */}
-        <div className="absolute bottom-10 right-10 flex space-x-6 h-[15rem]">
+        <div className="absolute bottom-10 right-5 flex space-x-6 h-[15rem]">
           {/* Card 1 */}
           <div className="bg-gray-500 bg-opacity-50 p-6 rounded-lg w-64 h-64 flex flex-col justify-start items-center text-white transition transform hover:scale-105 hover:bg-opacity-75">
             <h4 className="font-bold text-xl">Explore</h4>
